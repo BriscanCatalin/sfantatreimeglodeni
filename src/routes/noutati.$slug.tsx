@@ -9,15 +9,32 @@ export const Route = createFileRoute("/noutati/$slug")({
     return post;
   },
   head: ({ loaderData }) => {
-    const t = loaderData ? `${loaderData.title} – O pâine pe zi` : "Articol indisponibil";
+    const t = loaderData
+      ? `${loaderData.title} – Biserica Sfânta Treime Glodeni`
+      : "Articol indisponibil";
     const d = loaderData?.excerpt ?? "";
+    const canonical = loaderData
+      ? `https://sfantatreimeglodeni.com/noutati/${loaderData.slug}`
+      : null;
     const meta = [
-      { title: t }, { name: "description", content: d },
-      { property: "og:title", content: t }, { property: "og:description", content: d },
-      { property: "og:type", content: "article" }, { name: "twitter:card", content: "summary_large_image" },
+      { title: t },
+      { name: "description", content: d },
+      { property: "og:title", content: t },
+      { property: "og:description", content: d },
+      { property: "og:type", content: "article" },
+      { name: "twitter:card", content: "summary_large_image" },
     ];
-    if (loaderData?.img) meta.push({ property: "og:image", content: loaderData.img }, { name: "twitter:image", content: loaderData.img });
-    return { meta };
+    if (canonical) meta.push({ property: "og:url", content: canonical });
+    if (loaderData?.img) {
+      meta.push(
+        { property: "og:image", content: loaderData.img },
+        { name: "twitter:image", content: loaderData.img },
+      );
+    }
+    return {
+      meta,
+      links: canonical ? [{ rel: "canonical", href: canonical }] : [],
+    };
   },
   notFoundComponent: () => (
     <div className="min-h-screen flex flex-col items-center justify-center gap-4">

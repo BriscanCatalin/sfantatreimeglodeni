@@ -9,11 +9,31 @@ import {
 export const Route = createFileRoute("/evenimente")({
   head: () => ({
     meta: [
-      { title: "Evenimente – O pâine pe zi" },
+      { title: "Evenimente | Biserica Sfânta Treime Glodeni" },
       {
         name: "description",
         content:
-          "Evenimentele Bisericii Penticostale Sfânta Treime din Glodeni.",
+          "Programul permanent pentru copii și evenimentele Bisericii Penticostale Sfânta Treime din Glodeni, Republica Moldova.",
+      },
+      {
+        property: "og:title",
+        content: "Evenimente | Biserica Sfânta Treime Glodeni",
+      },
+      {
+        property: "og:description",
+        content:
+          "Programul permanent pentru copii și evenimentele Bisericii Sfânta Treime din Glodeni.",
+      },
+      { property: "og:type", content: "website" },
+      {
+        property: "og:url",
+        content: "https://sfantatreimeglodeni.com/evenimente",
+      },
+    ],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://sfantatreimeglodeni.com/evenimente",
       },
     ],
   }),

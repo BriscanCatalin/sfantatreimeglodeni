@@ -9,15 +9,47 @@ const donationAccounts = [
   { currency: "USD", iban: "MD04VI022512700000010USD" },
 ];
 
+const churchStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Church",
+  name: "Biserica Penticostală Sfânta Treime",
+  url: "https://sfantatreimeglodeni.com/",
+  telephone: "+37369050161",
+  email: "Igorlazar2274@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Str. Mihai Eminescu nr. 11",
+    addressLocality: "Glodeni",
+    addressCountry: "MD",
+  },
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "O pâine pe zi – Igor Lazăr, Glodeni" },
-      { name: "description", content: "Proiectul „O pâine pe zi” oferă pâine zilnic oamenilor nevoiași din Glodeni, Republica Moldova." },
-      { property: "og:title", content: "O pâine pe zi – Igor Lazăr" },
-      { property: "og:description", content: "Pâine zilnică și speranță pentru oamenii nevoiași din Glodeni." },
+      {
+        title: "Biserica Sfânta Treime Glodeni | O pâine pe zi",
+      },
+      {
+        name: "description",
+        content:
+          "Biserica Penticostală Sfânta Treime din Glodeni, Republica Moldova. Programul slujbelor și al copiilor, evenimente și proiectul social „O pâine pe zi”.",
+      },
+      {
+        property: "og:title",
+        content: "Biserica Sfânta Treime Glodeni | O pâine pe zi",
+      },
+      {
+        property: "og:description",
+        content:
+          "Programul bisericii, evenimente și proiectul social „O pâine pe zi” din Glodeni, Republica Moldova.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://sfantatreimeglodeni.com/" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://sfantatreimeglodeni.com/" },
     ],
   }),
   component: Index,
@@ -28,6 +60,12 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(churchStructuredData),
+        }}
+      />
       <header className="relative min-h-[88vh] flex items-end overflow-hidden">
         <img src={hero} alt="Pâine proaspătă coaptă în Glodeni" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-overlay" />
@@ -36,7 +74,10 @@ function Index() {
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:gap-x-6 text-xs md:text-sm"><a href="#proiect">Proiectul</a><a href="#noutati">Noutăți</a><Link to="/evenimente">Evenimente</Link><a href="#doneaza">Donează</a><a href="#contact">Contact</a></div>
         </nav>
         <div className="relative px-6 md:px-12 pb-20 max-w-4xl text-primary-foreground">
-          <p className="uppercase tracking-[0.3em] text-xs mb-4 opacity-80">Glodeni · Republica Moldova · din 2002</p>
+          <p className="uppercase tracking-[0.3em] text-xs mb-4 opacity-80">
+            Biserica Penticostală Sfânta Treime · Glodeni · Republica Moldova ·
+            din 2002
+          </p>
           <h1 className="text-5xl md:text-7xl leading-[1.05]">O pâine pe zi</h1>
           <p className="mt-6 text-lg md:text-xl max-w-xl opacity-90">Pâinea cea de toate zilele, coaptă cu dragoste și dăruită celor nevoiași — un gest simplu care aduce speranță.</p>
           <a href="#proiect" className="inline-block mt-8 rounded-full bg-primary px-7 py-3 font-medium hover:opacity-90 transition">Descoperă proiectul</a>
