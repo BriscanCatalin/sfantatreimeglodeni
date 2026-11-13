@@ -2,6 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { posts } from "@/lib/posts";
 import hero from "@/assets/download.jpg";
 
+const donationAccounts = [
+  { currency: "MDL", iban: "MD38VI022512700000074MDL" },
+  { currency: "EUR", iban: "MD51VI022512700000012EUR" },
+  { currency: "USD", iban: "MD04VI022512700000010USD" },
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -26,7 +32,7 @@ function Index() {
         <div className="absolute inset-0 bg-overlay" />
         <nav className="absolute top-0 inset-x-0 flex justify-between items-center px-6 md:px-12 py-6 text-primary-foreground">
           <span className="font-serif text-xl">Igor Lazăr</span>
-          <div className="flex gap-6 text-sm"><a href="#proiect">Proiectul</a><a href="#noutati">Noutăți</a><a href="#contact">Contact</a></div>
+          <div className="flex gap-6 text-sm"><a href="#proiect">Proiectul</a><a href="#noutati">Noutăți</a><a href="#doneaza">Donează</a><a href="#contact">Contact</a></div>
         </nav>
         <div className="relative px-6 md:px-12 pb-20 max-w-4xl text-primary-foreground">
           <p className="uppercase tracking-[0.3em] text-xs mb-4 opacity-80">Glodeni · Republica Moldova · din 2002</p>
@@ -69,6 +75,26 @@ function Index() {
               <div className="p-6"><p className="text-xs text-muted-foreground">{p.date}</p><h3 className="mt-2 text-xl group-hover:text-primary transition">{p.title}</h3><p className="mt-2 text-sm text-muted-foreground">{p.excerpt}</p></div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section id="doneaza" aria-labelledby="doneaza-heading" className="bg-secondary px-6 md:px-12 py-20">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-primary uppercase tracking-widest text-xs mb-3">Susține proiectul</p>
+          <h2 id="doneaza-heading" className="text-4xl">Donează</h2>
+          <p className="mt-4 max-w-2xl text-muted-foreground">
+            Poți susține proiectul „O pâine pe zi” prin transfer bancar în moneda dorită.
+          </p>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {donationAccounts.map(({ currency, iban }) => (
+              <article key={currency} className="rounded-lg border bg-card p-6 text-center">
+                <h3 className="font-serif text-2xl text-primary">{currency}</h3>
+                <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">IBAN</p>
+                <p className="mt-2 break-all font-mono text-sm md:text-base">{iban}</p>
+              </article>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-muted-foreground">Banca: BC Victoriabank SA</p>
         </div>
       </section>
 
