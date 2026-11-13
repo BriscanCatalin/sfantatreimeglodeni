@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { handleEventApi } from "@/lib/events-api";
+import server from "@/server";
 
 describe("Events API", () => {
   it("does not allow public requests to create events", async () => {
@@ -106,6 +107,36 @@ describe("Events API", () => {
     );
 
     expect(response?.status).toBe(503);
+  });
+
+  it("uses Nitro's Cloudflare environment when handling Worker requests", async () => {
+    const runtime = globalThis as typeof globalThis & { __env__?: unknown };
+    const previousEnvironment = runtime.__env__;
+    runtime.__env__ = {
+      EVENTS_KV: {
+        get: async () => null,
+        put: async () => undefined,
+        delete: async () => undefined,
+        list: async () => ({ keys: [], list_complete: true }),
+      },
+    };
+
+    try {
+      const response = await server.fetch(
+        new Request("https://sfantatreimeglodeni.com/api/public/events"),
+        undefined,
+        undefined,
+      );
+
+      expect(response.status).toBe(200);
+      expect((await response.json()).events).toHaveLength(1);
+    } finally {
+      if (previousEnvironment === undefined) {
+        delete runtime.__env__;
+      } else {
+        runtime.__env__ = previousEnvironment;
+      }
+    }
   });
 
   it("returns the featured event and events saved in storage", async () => {
