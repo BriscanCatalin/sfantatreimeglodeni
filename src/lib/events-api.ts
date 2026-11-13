@@ -24,7 +24,11 @@ interface EventEnvironment {
   EVENTS_ADMIN_PASSWORD?: string;
 }
 
-interface StoredEvent extends Omit<EventRecord, "imageUrl"> {
+interface StoredEvent extends Omit<
+  EventRecord,
+  "imageUrl" | "date" | "scheduleLabel" | "isPermanent"
+> {
+  date: string;
   imageKey: string | null;
   createdAt: string;
 }
@@ -525,9 +529,16 @@ async function handlePublicEvents(
   try {
     const storedEvents = await readStoredEvents(kv);
     const events = [...featuredEvents, ...storedEvents.map(toPublicEvent)].sort(
-      (left, right) =>
-        right.date.localeCompare(left.date) ||
-        right.time.localeCompare(left.time),
+      (left, right) => {
+        const permanentOrder =
+          Number(right.isPermanent === true) -
+          Number(left.isPermanent === true);
+        if (permanentOrder !== 0) return permanentOrder;
+        return (
+          (right.date ?? "").localeCompare(left.date ?? "") ||
+          right.time.localeCompare(left.time)
+        );
+      },
     );
     return jsonResponse({ events }, 200, "public, max-age=60");
   } catch (error) {

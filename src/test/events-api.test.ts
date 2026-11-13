@@ -131,7 +131,11 @@ describe("Events API", () => {
       expect(response.status).toBe(200);
       expect(
         (await response.json()).events.map(({ id }: { id: string }) => id),
-      ).toEqual(["invitatie-speciala-nevazatori-2026", "rugul-aprins-2026"]);
+      ).toEqual([
+        "program-copii-sambata",
+        "invitatie-speciala-nevazatori-2026",
+        "rugul-aprins-2026",
+      ]);
     } finally {
       if (previousEnvironment === undefined) {
         delete runtime.__env__;
@@ -146,7 +150,7 @@ describe("Events API", () => {
       id: "stored-event",
       title: "Seară de rugăciune",
       organizer: "Biserica Sfânta Treime",
-      date: "2026-11-15",
+      date: "2030-01-01",
       time: "18:00",
       venue: "Glodeni",
       description: "O seară împreună.",
@@ -169,17 +173,32 @@ describe("Events API", () => {
       { EVENTS_KV: kv },
     );
     const result = (await response?.json()) as {
-      events: Array<{ id: string; title: string; imageUrl: string | null }>;
+      events: Array<{
+        id: string;
+        title: string;
+        imageUrl: string | null;
+        scheduleLabel?: string;
+        isPermanent?: boolean;
+        description: string;
+      }>;
     };
 
     expect(response?.status).toBe(200);
     expect(result.events.map(({ id }) => id)).toEqual([
-      "invitatie-speciala-nevazatori-2026",
+      "program-copii-sambata",
       "stored-event",
+      "invitatie-speciala-nevazatori-2026",
       "rugul-aprins-2026",
     ]);
-    expect(result.events[0]?.title).toBe("Invitație specială");
+    expect(result.events[0]?.title).toBe("Program pentru copii");
     expect(result.events[0]?.imageUrl).toBeTruthy();
+    expect(result.events[0]?.isPermanent).toBe(true);
+    expect(result.events[0]?.scheduleLabel).toBe(
+      "În fiecare sâmbătă · 10:00–13:00",
+    );
+    expect(result.events[0]?.description).toContain(
+      "Orice copil este binevenit!",
+    );
     expect(result.events[1]?.title).toBe("Seară de rugăciune");
   });
 

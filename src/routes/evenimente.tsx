@@ -131,7 +131,10 @@ function EventsPage() {
                   </p>
                 )}
                 <p className="text-primary text-sm font-medium">
-                  {formatEventDate(event.date)} · {event.time}
+                  {event.scheduleLabel ??
+                    (event.date
+                      ? `${formatEventDate(event.date)} · ${event.time}`
+                      : event.time)}
                 </p>
                 <h2 className="mt-2 font-serif text-2xl">{event.title}</h2>
                 <p className="mt-1 text-sm text-muted-foreground">

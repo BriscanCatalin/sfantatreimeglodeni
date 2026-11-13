@@ -47,11 +47,12 @@ Cloudflare Worker.
 
 ## Events and event manager setup
 
-The public **Evenimente** page includes a special invitation for people with
-visual impairments on 22 November 2026 and the Rugul Aprins event on 14
-November 2026, ordered newest first. New events and uploaded images are stored
-in the `glodeni-events` Workers KV namespace. `wrangler.json` binds it as
-`EVENTS_KV`. The namespace is
+The public **Evenimente** page pins the permanent children's program (every
+Saturday from 10:00 to 13:00) first, followed by dated events in newest-first
+order. It also includes a special invitation for people with visual impairments
+on 22 November 2026 and the Rugul Aprins event on 14 November 2026. New events
+and uploaded images are stored in the `glodeni-events` Workers KV namespace.
+`wrangler.json` binds it as `EVENTS_KV`. The namespace is
 on the Workers Free plan: it includes up to 1 GB of storage and 1,000 writes
 per day; requests beyond Free limits are rejected rather than billed.
 
