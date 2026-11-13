@@ -318,11 +318,15 @@ function Index() {
                 </address>
               </div>
               <div>
-                <h3 className="font-serif text-2xl">Programul slujbelor</h3>
+                <h3 className="font-serif text-2xl">Programul bisericii</h3>
                 <dl className="mt-4 space-y-4">
                   <div><dt className="font-medium">Luni · 18:00</dt><dd className="opacity-80">Studiu Biblic</dd></div>
                   <div><dt className="font-medium">Miercuri · 18:00</dt><dd className="opacity-80">Slujbă de Evanghelizare</dd></div>
                   <div><dt className="font-medium">Vineri · 18:00</dt><dd className="opacity-80">Rugăciune</dd></div>
+                  <div>
+                    <dt className="font-medium">Sâmbătă · 10:00–13:00</dt>
+                    <dd className="opacity-80">Program pentru copii</dd>
+                  </div>
                   <div><dt className="font-medium">Duminică · 10:00</dt><dd className="opacity-80">Laudă și închinare</dd></div>
                 </dl>
               </div>
