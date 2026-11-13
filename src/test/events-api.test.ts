@@ -129,7 +129,9 @@ describe("Events API", () => {
       );
 
       expect(response.status).toBe(200);
-      expect((await response.json()).events).toHaveLength(1);
+      expect(
+        (await response.json()).events.map(({ id }: { id: string }) => id),
+      ).toEqual(["invitatie-speciala-nevazatori-2026", "rugul-aprins-2026"]);
     } finally {
       if (previousEnvironment === undefined) {
         delete runtime.__env__;
@@ -172,9 +174,12 @@ describe("Events API", () => {
 
     expect(response?.status).toBe(200);
     expect(result.events.map(({ id }) => id)).toEqual([
-      "rugul-aprins-2026",
+      "invitatie-speciala-nevazatori-2026",
       "stored-event",
+      "rugul-aprins-2026",
     ]);
+    expect(result.events[0]?.title).toBe("Invitație specială");
+    expect(result.events[0]?.imageUrl).toBeTruthy();
     expect(result.events[1]?.title).toBe("Seară de rugăciune");
   });
 

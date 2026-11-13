@@ -1,3 +1,4 @@
+import specialInvitationPoster from "@/assets/invitatie-speciala-nevazatori.png";
 import rugulAprinsPoster from "@/assets/rugul-aprins-2026.png";
 
 export interface EventRecord {
@@ -13,6 +14,18 @@ export interface EventRecord {
 }
 
 export const featuredEvents: EventRecord[] = [
+  {
+    id: "invitatie-speciala-nevazatori-2026",
+    title: "Invitație specială",
+    organizer: "Biserica Sfânta Treime Glodeni",
+    date: "2026-11-22",
+    time: "10:00",
+    venue: "Biserica Sfânta Treime, Str. Mihai Eminescu nr. 11, Glodeni",
+    description:
+      "Biserica Sfânta Treime invită persoanele nevăzătoare din Glodeni la slujba de duminică dimineața. Cu prilejul Zilei Internaționale a Nevăzătorilor din 13 noiembrie, biserica pregătește o mică atenție pentru invitați.",
+    entrance: "",
+    imageUrl: specialInvitationPoster,
+  },
   {
     id: "rugul-aprins-2026",
     title: "Rugul Aprins",

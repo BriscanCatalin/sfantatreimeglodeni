@@ -44,13 +44,208 @@ function Index() {
       </header>
 
       <section id="proiect" className="px-6 md:px-12 py-24 grid md:grid-cols-2 gap-16 max-w-6xl mx-auto">
-        <div>
+        <div className="md:sticky md:top-20 md:self-start">
           <p className="text-primary uppercase tracking-widest text-xs mb-3">Povestea noastră</p>
           <h2 className="text-4xl leading-tight">Un proiect născut din credință și compasiune</h2>
         </div>
-        <div className="space-y-5 text-muted-foreground text-lg leading-relaxed">
-          <p>Proiectul „O pâine pe zi” a început în 2002, la inițiativa pastorului Ilie Jolța de la Biserica Penticostală Filadelfia din Oradea, care a propus Bisericii Penticostale Sfânta Treime din Glodeni să ofere oamenilor săraci câte o pâine pe zi.</p>
-          <p>În 2005, biserica a achiziționat cuptoare pentru producerea pâinii, iar proiectul a căpătat amploare.</p>
+        <div className="text-muted-foreground text-lg leading-relaxed">
+          <p>
+            De la o pâine oferită cu dragoste, proiectul a crescut într-o
+            lucrare de sprijin pentru copii, persoane cu dizabilități și familii
+            aflate în nevoie.
+          </p>
+          <ol
+            aria-label="Istoricul proiectului"
+            className="relative mt-8 space-y-8 border-l border-primary/20 pl-7"
+          >
+            <li className="relative">
+              <span
+                aria-hidden="true"
+                className="absolute -left-[1.9rem] top-1 h-3 w-3 rounded-full border-2 border-background bg-primary"
+              />
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+                2002
+              </p>
+              <h3 className="mt-1 text-xl font-medium text-foreground">
+                O pâine pentru cei în nevoie
+              </h3>
+              <p className="mt-2 text-base">
+                La inițiativa pastorului Ilie Jolța de la Biserica Penticostală
+                Filadelfia din Oradea, Biserica Penticostală Sfânta Treime din
+                Glodeni începe să ofere zilnic pâine oamenilor săraci.
+              </p>
+            </li>
+            <li className="relative">
+              <span
+                aria-hidden="true"
+                className="absolute -left-[1.9rem] top-1 h-3 w-3 rounded-full border-2 border-background bg-primary"
+              />
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+                2005
+              </p>
+              <h3 className="mt-1 text-xl font-medium text-foreground">
+                Cuptoare pentru pâinea dăruită
+              </h3>
+              <p className="mt-2 text-base">
+                Biserica achiziționează cuptoare proprii, iar proiectul se
+                dezvoltă pentru a putea ajunge la mai mulți oameni.
+              </p>
+            </li>
+            <li className="relative">
+              <span
+                aria-hidden="true"
+                className="absolute -left-[1.9rem] top-1 h-3 w-3 rounded-full border-2 border-background bg-primary"
+              />
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+                12 iulie 2015 · viața comunității
+              </p>
+              <h3 className="mt-1 text-xl font-medium text-foreground">
+                O comunitate care crește
+              </h3>
+              <p className="mt-2 text-base">
+                Biserica Sfânta Treime sărbătorește botezul a 12 persoane — un
+                reper din viața spirituală a comunității în care se desfășoară
+                proiectul.
+              </p>
+              <a
+                className="mt-2 inline-block text-sm text-primary underline underline-offset-4 hover:opacity-80"
+                href="https://www.facebook.com/share/p/14vY1j3uthm/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Vezi relatarea despre botez
+              </a>
+            </li>
+            <li className="relative">
+              <span
+                aria-hidden="true"
+                className="absolute -left-[1.9rem] top-1 h-3 w-3 rounded-full border-2 border-background bg-primary"
+              />
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+                De-a lungul timpului
+              </p>
+              <h3 className="mt-1 text-xl font-medium text-foreground">
+                Grija ajunge aproape de oameni
+              </h3>
+              <p className="mt-2 text-base">
+                Pastorul și familia sa vizitează persoane aflate în nevoie, iar
+                cei săraci sau fără adăpost pot primi o masă la biserică după
+                slujbă. Ajutorul este însoțit de sprijin în sezonul rece, seri
+                de evanghelizare și activități creștine pentru copii.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                <a
+                  className="text-primary underline underline-offset-4 hover:opacity-80"
+                  href="https://www.facebook.com/share/p/1Dk1cXHxTN/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Vizite la domiciliu
+                </a>
+                <a
+                  className="text-primary underline underline-offset-4 hover:opacity-80"
+                  href="https://www.facebook.com/share/p/1Ho6VNfTbm/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Masă după slujbă
+                </a>
+                <a
+                  className="text-primary underline underline-offset-4 hover:opacity-80"
+                  href="https://www.facebook.com/share/p/18Ut4SeVjv/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ajutor de iarnă
+                </a>
+                <a
+                  className="text-primary underline underline-offset-4 hover:opacity-80"
+                  href="https://www.facebook.com/share/p/19uez4cdRn/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Seri de evanghelizare
+                </a>
+                <a
+                  className="text-primary underline underline-offset-4 hover:opacity-80"
+                  href="https://www.facebook.com/share/p/1HdyKRfZKY/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Sprijin și activități
+                </a>
+              </div>
+            </li>
+            <li className="relative">
+              <span
+                aria-hidden="true"
+                className="absolute -left-[1.9rem] top-1 h-3 w-3 rounded-full border-2 border-background bg-primary"
+              />
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+                Relatările recente
+              </p>
+              <h3 className="mt-1 text-xl font-medium text-foreground">
+                Ajutor concret, zi de zi
+              </h3>
+              <p className="mt-2 text-base">
+                Biserica asigură prânzul, de luni până vineri, pentru 20 de
+                copii din familii vulnerabile și pregătește lunar pachete pentru
+                25 de persoane cu dizabilități și oameni din gospodării
+                vulnerabile. Rugăciunea, donațiile și implicarea comunității
+                ajută lucrarea să continue.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                <a
+                  className="text-primary underline underline-offset-4 hover:opacity-80"
+                  href="https://www.facebook.com/share/p/1EiN65a7MG/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Prânz pentru copii
+                </a>
+                <a
+                  className="text-primary underline underline-offset-4 hover:opacity-80"
+                  href="https://www.facebook.com/share/p/1JprRK9fnV/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Pachete lunare
+                </a>
+                <a
+                  className="text-primary underline underline-offset-4 hover:opacity-80"
+                  href="https://www.facebook.com/share/p/17z2sJudDC/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Rugăciune și sprijin
+                </a>
+                <a
+                  className="text-primary underline underline-offset-4 hover:opacity-80"
+                  href="https://www.facebook.com/share/p/1JAAPR8FCR/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Proiectul în Glodeni
+                </a>
+                <a
+                  className="text-primary underline underline-offset-4 hover:opacity-80"
+                  href="https://www.facebook.com/share/1CVgGBkD5r/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Apel pentru susținere
+                </a>
+                <a
+                  className="text-primary underline underline-offset-4 hover:opacity-80"
+                  href="https://www.facebook.com/share/p/1E18U5Ai3A/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Mulțumiri donatorilor
+                </a>
+              </div>
+            </li>
+          </ol>
         </div>
       </section>
 

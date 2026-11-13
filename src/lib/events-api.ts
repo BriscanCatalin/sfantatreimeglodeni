@@ -526,8 +526,8 @@ async function handlePublicEvents(
     const storedEvents = await readStoredEvents(kv);
     const events = [...featuredEvents, ...storedEvents.map(toPublicEvent)].sort(
       (left, right) =>
-        left.date.localeCompare(right.date) ||
-        left.time.localeCompare(right.time),
+        right.date.localeCompare(left.date) ||
+        right.time.localeCompare(left.time),
     );
     return jsonResponse({ events }, 200, "public, max-age=60");
   } catch (error) {
