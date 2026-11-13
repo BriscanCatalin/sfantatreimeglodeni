@@ -62,10 +62,10 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
-      // Nitro invokes this nested entry without env; Cloudflare stores it globally.
+      // Nitro can invoke this nested entry with an empty env object.
       const runtimeEnv =
-        env ??
-        (globalThis as typeof globalThis & { __env__?: unknown }).__env__;
+        (globalThis as typeof globalThis & { __env__?: unknown }).__env__ ??
+        env;
       const apiResponse = await handleEventApi(request, runtimeEnv);
       if (apiResponse) return apiResponse;
 

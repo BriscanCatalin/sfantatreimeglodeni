@@ -124,7 +124,7 @@ describe("Events API", () => {
     try {
       const response = await server.fetch(
         new Request("https://sfantatreimeglodeni.com/api/public/events"),
-        undefined,
+        {},
         undefined,
       );
 
