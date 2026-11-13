@@ -42,3 +42,5 @@ Actions**:
 
 The workflow installs dependencies, runs the tests, builds the site, and
 deploys the prebuilt Worker. Do not put the API token in the repository.
+The Worker name is defined in `wrangler.json` and should match the existing
+Cloudflare Worker.
