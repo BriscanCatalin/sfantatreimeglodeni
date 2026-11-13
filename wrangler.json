@@ -1,3 +1,9 @@
 {
-  "name": "tanstack-start-ts"
+  "name": "tanstack-start-ts",
+  "kv_namespaces": [
+    {
+      "binding": "EVENTS_KV",
+      "id": "7193c11d3dee4a1a8688e9386d3bafda"
+    }
+  ]
 }

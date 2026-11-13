@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { posts } from "@/lib/posts";
 import hero from "@/assets/download.jpg";
+import church from "@/assets/glodeni-biserica.jpeg";
 
 const donationAccounts = [
   { currency: "MDL", iban: "MD38VI022512700000074MDL" },
@@ -30,9 +31,9 @@ function Index() {
       <header className="relative min-h-[88vh] flex items-end overflow-hidden">
         <img src={hero} alt="Pâine proaspătă coaptă în Glodeni" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-overlay" />
-        <nav className="absolute top-0 inset-x-0 flex justify-between items-center px-6 md:px-12 py-6 text-primary-foreground">
+        <nav className="absolute top-0 inset-x-0 flex flex-wrap justify-between items-center gap-y-3 px-6 md:px-12 py-6 text-primary-foreground">
           <span className="font-serif text-xl">Igor Lazăr</span>
-          <div className="flex gap-6 text-sm"><a href="#proiect">Proiectul</a><a href="#noutati">Noutăți</a><a href="#doneaza">Donează</a><a href="#contact">Contact</a></div>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 md:gap-x-6 text-xs md:text-sm"><a href="#proiect">Proiectul</a><a href="#noutati">Noutăți</a><Link to="/evenimente">Evenimente</Link><a href="#doneaza">Donează</a><a href="#contact">Contact</a></div>
         </nav>
         <div className="relative px-6 md:px-12 pb-20 max-w-4xl text-primary-foreground">
           <p className="uppercase tracking-[0.3em] text-xs mb-4 opacity-80">Glodeni · Republica Moldova · din 2002</p>
@@ -91,6 +92,8 @@ function Index() {
                 <h3 className="font-serif text-2xl text-primary">{currency}</h3>
                 <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">IBAN</p>
                 <p className="mt-2 break-all font-mono text-sm md:text-base">{iban}</p>
+                <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">Titular cont</p>
+                <p className="mt-1 text-sm font-medium">A.O O PAINE PE ZI</p>
               </article>
             ))}
           </div>
@@ -98,10 +101,42 @@ function Index() {
         </div>
       </section>
 
-      <footer id="contact" className="bg-accent text-accent-foreground px-6 md:px-12 py-16 text-center">
-        <h2 className="text-3xl">Susține proiectul</h2>
-        <p className="mt-3 opacity-80 max-w-lg mx-auto">Biserica Penticostală Sfânta Treime, Glodeni, Republica Moldova</p>
-        <p className="mt-10 text-xs opacity-60">© {new Date().getFullYear()} Igor Lazăr</p>
+      <section id="contact" aria-labelledby="contact-heading" className="bg-accent text-accent-foreground px-6 md:px-12 py-16">
+        <div className="max-w-6xl mx-auto">
+          <p className="uppercase tracking-widest text-xs mb-3 opacity-80">Biserica Penticostală Sfânta Treime</p>
+          <h2 id="contact-heading" className="text-3xl md:text-4xl">Contact și program</h2>
+          <div className="mt-10 grid md:grid-cols-2 gap-10 items-start">
+            <img
+              src={church}
+              alt="Casa de rugăciune din Glodeni"
+              loading="lazy"
+              className="w-full h-72 md:h-full min-h-[360px] rounded-lg object-cover"
+            />
+            <div className="grid sm:grid-cols-2 gap-8">
+              <div>
+                <h3 className="font-serif text-2xl">Contact</h3>
+                <address className="mt-4 space-y-4 not-italic">
+                  <p><span className="font-medium">Pastor:</span> Igor Lazăr</p>
+                  <p><span className="font-medium">Telefon:</span> <a className="underline underline-offset-4 hover:opacity-80" href="tel:+37369050161">+373 690 50 161</a></p>
+                  <p><span className="font-medium">Email:</span> <a className="break-all underline underline-offset-4 hover:opacity-80" href="mailto:Igorlazar2274@gmail.com">Igorlazar2274@gmail.com</a></p>
+                  <p><span className="font-medium">Adresă:</span> Str. Mihai Eminescu nr. 11, Glodeni</p>
+                </address>
+              </div>
+              <div>
+                <h3 className="font-serif text-2xl">Programul slujbelor</h3>
+                <dl className="mt-4 space-y-4">
+                  <div><dt className="font-medium">Luni · 18:00</dt><dd className="opacity-80">Studiu Biblic</dd></div>
+                  <div><dt className="font-medium">Miercuri · 18:00</dt><dd className="opacity-80">Slujbă de Evanghelizare</dd></div>
+                  <div><dt className="font-medium">Vineri · 18:00</dt><dd className="opacity-80">Rugăciune</dd></div>
+                  <div><dt className="font-medium">Duminică · 10:00</dt><dd className="opacity-80">Laudă și închinare</dd></div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer className="bg-accent text-accent-foreground px-6 md:px-12 pb-8 text-center">
+        <p className="text-xs opacity-60">© {new Date().getFullYear()} Igor Lazăr</p>
       </footer>
     </main>
   );

@@ -10,11 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EvenimenteRouteImport } from './routes/evenimente'
+import { Route as AdminEvenimenteRouteImport } from './routes/admin.evenimente'
 import { Route as NoutatiSlugRouteImport } from './routes/noutati.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvenimenteRoute = EvenimenteRouteImport.update({
+  id: '/evenimente',
+  path: '/evenimente',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminEvenimenteRoute = AdminEvenimenteRouteImport.update({
+  id: '/admin/evenimente',
+  path: '/admin/evenimente',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NoutatiSlugRoute = NoutatiSlugRouteImport.update({
@@ -25,27 +37,35 @@ const NoutatiSlugRoute = NoutatiSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/evenimente': typeof EvenimenteRoute
+  '/admin/evenimente': typeof AdminEvenimenteRoute
   '/noutati/$slug': typeof NoutatiSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/evenimente': typeof EvenimenteRoute
+  '/admin/evenimente': typeof AdminEvenimenteRoute
   '/noutati/$slug': typeof NoutatiSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/evenimente': typeof EvenimenteRoute
+  '/admin/evenimente': typeof AdminEvenimenteRoute
   '/noutati/$slug': typeof NoutatiSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/noutati/$slug'
+  fullPaths: '/' | '/evenimente' | '/admin/evenimente' | '/noutati/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/noutati/$slug'
-  id: '__root__' | '/' | '/noutati/$slug'
+  to: '/' | '/evenimente' | '/admin/evenimente' | '/noutati/$slug'
+  id: '__root__' | '/' | '/evenimente' | '/admin/evenimente' | '/noutati/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EvenimenteRoute: typeof EvenimenteRoute
+  AdminEvenimenteRoute: typeof AdminEvenimenteRoute
   NoutatiSlugRoute: typeof NoutatiSlugRoute
 }
 
@@ -56,6 +76,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evenimente': {
+      id: '/evenimente'
+      path: '/evenimente'
+      fullPath: '/evenimente'
+      preLoaderRoute: typeof EvenimenteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/evenimente': {
+      id: '/admin/evenimente'
+      path: '/admin/evenimente'
+      fullPath: '/admin/evenimente'
+      preLoaderRoute: typeof AdminEvenimenteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/noutati/$slug': {
@@ -70,6 +104,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EvenimenteRoute: EvenimenteRoute,
+  AdminEvenimenteRoute: AdminEvenimenteRoute,
   NoutatiSlugRoute: NoutatiSlugRoute,
 }
 export const routeTree = rootRouteImport
