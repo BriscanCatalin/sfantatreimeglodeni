@@ -9,6 +9,8 @@ const donationAccounts = [
   { currency: "USD", iban: "MD04VI022512700000010USD" },
 ];
 
+const donationOrganization = "Asociația Obștească „O Pâine pe Zi”";
+
 const churchStructuredData = {
   "@context": "https://schema.org",
   "@type": "Church",
@@ -320,7 +322,7 @@ function Index() {
           <p className="text-primary uppercase tracking-widest text-xs mb-3">Susține proiectul</p>
           <h2 id="doneaza-heading" className="text-4xl">Donează</h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">
-            Poți susține proiectul „O pâine pe zi” prin transfer bancar în moneda dorită.
+            Poți susține {donationOrganization} prin transfer bancar în moneda dorită.
           </p>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
             {donationAccounts.map(({ currency, iban }) => (
@@ -329,7 +331,7 @@ function Index() {
                 <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">IBAN</p>
                 <p className="mt-2 break-all font-mono text-sm md:text-base">{iban}</p>
                 <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">Titular cont</p>
-                <p className="mt-1 text-sm font-medium">A.O O PAINE PE ZI</p>
+                <p className="mt-1 text-sm font-medium">{donationOrganization}</p>
               </article>
             ))}
           </div>
